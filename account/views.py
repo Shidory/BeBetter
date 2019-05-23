@@ -2,4 +2,5 @@ from django.shortcuts import render
 
 # Create your views here.
 class Account():
-    pass
+    def login(self):
+        pass
