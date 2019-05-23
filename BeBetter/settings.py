@@ -54,7 +54,7 @@ ROOT_URLCONF = 'BeBetter.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['account/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
