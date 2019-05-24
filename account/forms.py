@@ -61,4 +61,14 @@ class UserSignUpForm(forms.ModelForm):
             return forms.ValidationError("Email is not in correct format")
 
     def clean_password_conf(self):
-        pass
+        pwd = self.cleaned_data['password']
+        pwd_conf = self.cleaned_data['password_conf']
+        min_lenght = 8
+        if pwd and pwd_conf:
+            if pwd != pwd_conf:
+                raise forms.ValidationError("Password and password confirm not matched!")
+            else:
+                if len(pwd) <min_lenght:
+                    raise forms.ValidationError("Password should have atleast %d characters!" %min_lenght)
+                if pwd.isdigit():
+                    raise forms.ValidationError("Password should not all numeric")
