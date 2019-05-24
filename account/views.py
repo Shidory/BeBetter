@@ -9,6 +9,7 @@ from django.http.response import HttpResponse
 from django.contrib.auth import authenticate
 
 
+
 class Account:
     def login(request):
         if request.method == 'POST':
@@ -23,14 +24,7 @@ class Account:
                     messages.error(request, 'Username and password did not matched!')
             except auth.ObjectNotExist():
                 print("Invalid user")
-        return render(request, 'account/login')
-        #     form = UserLoginForm(request.POST)
-        #     if form.is_valid():
-        #         form.save()
-        #         return HttpResponseRedirect('/account/')
-        # else:
-        #     form = UserLoginForm()
-        # return render(request, 'account/login.html', {'form':form})
+        return render(request, 'account/login.html')
 
     def signup(request):
         if request.method == 'POST':
