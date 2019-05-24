@@ -7,3 +7,6 @@ class UserLogin(models.Model):
 
     def __str__(self):
         return self.email
+
+class UserSignUp(models.Model):
+    pass
