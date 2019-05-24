@@ -43,4 +43,5 @@ class Account:
         return render(request, 'account/registration.html', {'frm': form})
 
     def logout(request):
-        pass
+        auth.logout(request)
+        return render(request, 'home.html')
