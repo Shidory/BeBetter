@@ -1,5 +1,7 @@
 from django import forms
 from .models import *
+from django.contrib.auth.models import User
+from django.core.validators import validate_email
 
 class UserLoginForm(forms.ModelForm):
     email = forms.EmailField(required=True)
@@ -46,10 +48,14 @@ class UserSignUpForm(forms.ModelForm):
     def clean_username(self):
         user = self.cleaned_data['username']
         try:
-            match = UserSignUp.objects.get(username = user)
+            match = UserSignUp.objects.get(username=user)
         except:
             return self.cleaned_data['username']
         raise forms.ValidationError("Username already exist!")
 
     def clean_email(self):
-        pass
+        email = self.cleaned_data['email']
+        try:
+            mail = validate_email(email)
+        except:
+            return forms.ValidationError("Email is not in correct format")
