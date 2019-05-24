@@ -44,4 +44,9 @@ class UserSignUpForm(forms.ModelForm):
         ]
 
     def clean_username(self):
-        pass
+        user = self.cleaned_data['username']
+        try:
+            match = UserSignUp.objects.get(username = user)
+        except:
+            return self.cleaned_data['username']
+        raise forms.ValidationError("Username already exist!")
