@@ -37,6 +37,7 @@
                         <label for="" class="col-md-2 control-label">Username</label>
                         <div class="col-md-5">
                             {{ frm.username}}
+                            {{ frm.username.errors}}
                         </div>
                     </div>
 
@@ -44,6 +45,7 @@
                         <label for="" class="col-md-2 control-label">Email</label>
                         <div class="col-md-5">
                             {{ frm.email}}
+                            {{ frm.email.errors}}
                         </div>
                     </div>
 
@@ -57,6 +59,7 @@
                         <label for="" class="col-md-2 control-label">Password confirm</label>
                         <div class="col-md-5">
                             {{ frm.password_conf}}
+                            {{ frm.password_conf.errors}}
                         </div>
                     </div>
                     <div class="col-md-offset-3">
