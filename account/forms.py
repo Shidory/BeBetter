@@ -50,3 +50,6 @@ class UserSignUpForm(forms.ModelForm):
         except:
             return self.cleaned_data['username']
         raise forms.ValidationError("Username already exist!")
+
+    def clean_email(self):
+        pass
