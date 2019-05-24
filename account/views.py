@@ -1,19 +1,36 @@
 from django.shortcuts import render
-from django.http.response import HttpResponse
-from django.http import *
-from .forms import *
 from .models import *
+from .forms import *
+from django.http import *
+from django.contrib.auth.models import User
+from django.contrib import messages
+from django.http.response import HttpResponse
+
+from django.contrib.auth import authenticate
+
 
 class Account:
     def login(request):
         if request.method == 'POST':
-            form = UserLoginForm(request.POST)
-            if form.is_valid():
-                form.save()
-                return HttpResponseRedirect('/account/')
-        else:
-            form = UserLoginForm()
-        return render(request, 'account/login.html', {'form':form})
+            username = request.POST['username']
+            password = request.POST['password']
+            try:
+                user = auth.authentifacte(username=username, password=password)
+                if user is not None:
+                    auth.login(request, user)
+                    return render(request, 'home.html')
+                else:
+                    messages.error(request, 'Username and password did not matched!')
+            except auth.ObjectNotExist():
+                print("Invalid user")
+        return render(request, 'account/login')
+        #     form = UserLoginForm(request.POST)
+        #     if form.is_valid():
+        #         form.save()
+        #         return HttpResponseRedirect('/account/')
+        # else:
+        #     form = UserLoginForm()
+        # return render(request, 'account/login.html', {'form':form})
 
     def signup(request):
         if request.method == 'POST':
@@ -31,4 +48,4 @@ class Account:
                 return render(request, 'account/login')
         else:
             form = UserSignUpForm()
-        return render(request, 'registration.html', {'frm': form})
+        return render(request, 'account/registration.html', {'frm': form})
