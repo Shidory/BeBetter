@@ -41,3 +41,6 @@ class Account:
         else:
             form = UserSignUpForm()
         return render(request, 'account/registration.html', {'frm': form})
+
+    def logout(request):
+        pass
