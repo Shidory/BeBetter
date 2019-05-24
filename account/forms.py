@@ -4,8 +4,12 @@ from django.contrib.auth.models import User
 from django.core.validators import validate_email
 
 class UserLoginForm(forms.ModelForm):
-    email = forms.EmailField(required=True)
-    password = forms.CharField(required=True)
+    email = forms.CharField(widget=forms.EmailInput(
+        attrs={'class': 'form-control', 'placeholder': 'E-mail'}
+    ), required=True, max_length=50)
+    password = forms.CharField(widget=forms.PasswordInput(
+        attrs={'class': 'form-control', 'placeholder': 'Password'}
+    ), required=True, max_length=50)
 
     class Meta:
         model = UserLogin
@@ -32,7 +36,7 @@ class UserSignUpForm(forms.ModelForm):
     ), required=True, max_length=50)
     password_conf = forms.CharField(widget=forms.PasswordInput(
         attrs={'class': 'form-control', 'placeholder': 'Password confirm'}
-    ))
+    ), required=True, max_length=50)
 
     class Meta:
         model = UserSignUp
