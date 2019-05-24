@@ -7,6 +7,12 @@
     <title>login</title>
 </head>
 <body>
-    login
+    <form method="post" action="">
+    {% csrf_token %}
+    <div>
+        {{form.as_p}}
+    </div> 
+    <button type="submit">Login</button>
+    </form>
 </body>
 </html>
