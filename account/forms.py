@@ -59,3 +59,6 @@ class UserSignUpForm(forms.ModelForm):
             mail = validate_email(email)
         except:
             return forms.ValidationError("Email is not in correct format")
+
+    def clean_password_conf(self):
+        pass
