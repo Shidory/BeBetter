@@ -2,8 +2,8 @@ from django import forms
 from .models import *
 
 class UserLoginForm(forms.ModelForm):
-    # email = forms.EmailField(widget=forms.EmailField())
-    # password = forms.CharField(widget=forms.PasswordInput)
+    email = forms.EmailField(required=True)
+    password = forms.CharField(required=True)
 
     class Meta:
         model = UserLogin
@@ -11,3 +11,6 @@ class UserLoginForm(forms.ModelForm):
             'email',
             'password'
         ]
+
+class UserSignUpForm(forms.ModelForm):
+    pass
