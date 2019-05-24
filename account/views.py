@@ -4,11 +4,9 @@ from .forms import *
 from django.http import *
 from django.contrib.auth.models import User
 from django.contrib import messages
+from django.contrib import auth
+from django.core.exceptions import ObjectDoesNotExist
 from django.http.response import HttpResponse
-
-from django.contrib.auth import authenticate
-
-
 
 class Account:
     def login(request):
