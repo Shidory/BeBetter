@@ -4,7 +4,7 @@ from django.http import *
 from .forms import *
 from .models import *
 
-class AccountLogin:
+class Account:
     def login(request):
         if request.method == 'POST':
             form = UserLoginForm(request.POST)
@@ -15,6 +15,5 @@ class AccountLogin:
             form = UserLoginForm()
         return render(request, 'account/login.html', {'form':form})
 
-class AccountSignUp:
-    def signup(self):
+    def signup(request):
         pass
