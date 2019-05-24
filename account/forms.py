@@ -13,4 +13,20 @@ class UserLoginForm(forms.ModelForm):
         ]
 
 class UserSignUpForm(forms.ModelForm):
-    pass
+    first_name = forms.CharField()
+    last_name = forms.CharField()
+    user_name = forms.CharField()
+    email = forms.CharField()
+    password = forms.CharField()
+    password_conf = forms.CharField()
+
+    class Meta:
+        model = UserSignUp
+        fields = [
+            'first_name',
+            'last_name',
+            'user_name',
+            'email',
+            'password',
+            'password_conf'
+        ]
