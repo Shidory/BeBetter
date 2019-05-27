@@ -25,7 +25,13 @@ class UserLoginForm(forms.ModelForm):
             return forms.ValidationError("Email is not in correct format")
 
     def clean_password(self):
-        pass
+        password = self.cleaned_data['email']
+        min_lenght = 8
+        if len(password) < min_lenght:
+            raise forms.ValidationError("Password should have atleast %d characters!" % min_lenght)
+        if password.isdigit():
+            raise forms.ValidationError("Password should not all numeric")
+
 
 class UserSignUpForm(forms.ModelForm):
     first_name = forms.CharField(widget=forms.TextInput(
