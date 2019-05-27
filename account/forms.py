@@ -1,6 +1,5 @@
 from django import forms
 from .models import *
-from django.contrib.auth.models import User
 from django.core.validators import validate_email
 
 class UserLoginForm(forms.ModelForm):
@@ -17,6 +16,9 @@ class UserLoginForm(forms.ModelForm):
             'email',
             'password'
         ]
+
+    def clean_email(self):
+        pass
 
 class UserSignUpForm(forms.ModelForm):
     first_name = forms.CharField(widget=forms.TextInput(
