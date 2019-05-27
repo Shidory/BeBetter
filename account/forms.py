@@ -18,7 +18,11 @@ class UserLoginForm(forms.ModelForm):
         ]
 
     def clean_email(self):
-        pass
+        email = self.cleaned_data['email']
+        try:
+            mail = validate_email(email)
+        except:
+            return forms.ValidationError("Email is not in correct format")
 
 class UserSignUpForm(forms.ModelForm):
     first_name = forms.CharField(widget=forms.TextInput(
