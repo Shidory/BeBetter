@@ -24,6 +24,9 @@ class UserLoginForm(forms.ModelForm):
         except:
             return forms.ValidationError("Email is not in correct format")
 
+    def clean_password(self):
+        pass
+
 class UserSignUpForm(forms.ModelForm):
     first_name = forms.CharField(widget=forms.TextInput(
         attrs={'class': 'form-control', 'placeholder': 'First name'}
